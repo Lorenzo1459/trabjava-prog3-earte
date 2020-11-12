@@ -11,3 +11,5 @@ Sobre o feedback anterior:
 -Ordem alfabética: Tememos que em nosso código o professor Vitor continue em último (mas não menos importante). Brincadeiras a parte, assim como a redução da manager, acabamos deixando essa parte mais para o final e o tempo ficou curto demais.
 
 -Output nos casos de erro: O nosso output nos casos de erro exibe também o nome da exception. (Ex. Saída esperada: Referência inválida : INF09331-2020/E. Nossa saída : custom_exceptions.InvallidReferenceException: Referencia invalida: INF09331-2020/E). Estamos cientes disso, mas não conseguimos fazer o ajuste necessário.
+ 
+ - Os argumentos (como -p, -d..) são intercaláveis, entretanto os argumentos (--read-only e --write-only) só funcionam corretamente se forem os últimos argumentos. 
