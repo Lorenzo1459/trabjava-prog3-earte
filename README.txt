@@ -1,5 +1,13 @@
-Professor, para a etapa final ainda acrescentaremos mais informações ao README.md, quanto ao trabalho, a parte de relatórios (parte 2) ainda está incompleta.
-Dito isso, acreditamos ter concluído a parte 3 (Lidando com Exceções) e devotamos um tempo à organização do trabalho; ainda não conseguimos tirar a grande responsabilidade
-da classe Manager que foi mencionada na correção anterior, mas caminhamos nessa direção e pretendemos deixá-la enxuta para a entrega final. Levamos em conta o que foi mencionado
-sobre a hierarquia da classe Atividades e a reformulamos (Criando classes para aula, estudo etc.. que extendiam a classe Atividade), temos algumas funções ainda a tratar, mas
-já houve progresso nesse aspecto. Agradecemos pelos feedbacks.
+UPDATE : 
+Sobre o feedback anterior: 
+-Relatórios : Implementamos todos os relatórios, infelizmente a parte de carga horária das disciplinas não funcionou corretamente e optamos por retirá-la, todas as demais aparentemente funcionam como deveriam.
+
+-Modularização : Modularizamos o programa melhor, criamos um pacote para as atividades e um pacote para as classes de execução principais de nosso programa (principal.java e manager.java), agora os pacotes estão com arquivos mais coerentes com sua função no código.
+
+-Atividades : Mudamos a classe atividade, agora ela é uma classe abstrata. Adaptamos suas extensões para funcionarem dessa nova maneira.
+
+-Manager : Infelizmente não conseguimos reduzir muito a classe manager, em primeira instância, após o feedback, fizemos esforços e a reduzimos um pouco, entretanto, logo em seguida, mesmo separando o pacote que lida com os arquivos CSV, acabamos poluindo ela novamente e ficou difícil (devido a outros ajustes que eram necessários no momento) conseguirmos reduzí-la como gostaríamos à tempo. Pedimos desculpa por essa.
+
+-Ordem alfabética: Infelizmente, no nosso código o professor Vitor continua em último (mas não menos importante). Brincadeiras a parte, assim como a manager, acabamos deixando essa parte mais para o final e o tempo ficou curto demais.
+
+-Output nos casos de erro: O nosso output nos casos de erro exibe também o nome da exception. (Ex. Saída esperada: Referência inválida : INF09331-2020/E. Nossa saída : custom_exceptions.InvallidReferenceException: Referencia invalida: INF09331-2020/E). Estamos cientes disso, mas não conseguimos fazer o ajuste necessário.
