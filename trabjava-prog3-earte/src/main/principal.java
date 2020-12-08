@@ -5,7 +5,7 @@ import java.util.*;
 public class principal {
 	static boolean write_only = false;
 	public static void main(String[] args) {	
-		File handle_error = new File("out/output.txt");
+		//File handle_error = new File("out/output.txt");
 		
 		String arq_periodos = null;
 		String arq_docentes = null;
@@ -18,6 +18,7 @@ public class principal {
 		Manager m = new Manager();
 		
 		Scanner leitor = new Scanner(System.in);
+		set_write_only_status(true);
 		
 		try {
 			for(int i = 0; i < args.length; i = i + 2) {
@@ -56,7 +57,8 @@ public class principal {
 						ObjectOutputStream objOutput = new ObjectOutputStream(fileOutput);
 						objOutput.writeObject(m);
 						objOutput.close();
-						System.out.println("Salvo com sucesso.");			
+						set_write_only_status(false);						
+						//System.out.println("Salvo com sucesso.");			
 					}catch(Exception e) {
 						System.out.println("Erro de I/O ");					
 					}
@@ -66,8 +68,7 @@ public class principal {
 						FileInputStream fileInput = new FileInputStream("dados.dat");
 						ObjectInputStream objInput = new ObjectInputStream(fileInput);
 						m = (Manager) objInput.readObject();
-						System.out.println("Carregado com sucesso.");	
-						set_write_only_status(true);
+						//System.out.println("Carregado com sucesso.");	
 						objInput.close();					
 					}catch(Exception e) {
 						System.out.println("Erro de I/O");					
@@ -86,16 +87,15 @@ public class principal {
 			m.DisplayMenu("-n", arq_avaliacoes);
 			
 		}catch(Exception e) {
-			try {
-                PrintWriter pw = new PrintWriter(new FileOutputStream(handle_error));
+			//try {
+				PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
+				//e.printStackTrace();
                 pw.println("Erro de I/O.");
                 pw.flush();
                 pw.close();
                 System.exit(1);
-            } 
-            catch (FileNotFoundException e1) {
-                e1.printStackTrace();
-            }
+            //} 
+            //catch (FileNotFoundException e1) { e1.printStackTrace(); }
 		}
 	
 	}

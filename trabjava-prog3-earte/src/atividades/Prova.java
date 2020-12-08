@@ -33,7 +33,7 @@ public class Prova extends Atividade implements Serializable {
 		String conteudo = cont;
 		setConteudoProva(conteudo);
 		setSincrona(true);
-		System.out.println("Nova prova registrada");
+		//System.out.println("Nova prova registrada");
 	}
 
 }

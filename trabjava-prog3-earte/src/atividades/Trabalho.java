@@ -39,7 +39,7 @@ public class Trabalho extends Atividade implements Serializable {
 		int qtdAluno = Integer.parseInt(qtdaluno);
 		setQtdAlunos(qtdAluno);
 		setSincrona(false);
-		System.out.println("Novo trabalho registrado");
+		//System.out.println("Novo trabalho registrado");
 	}
 
 }

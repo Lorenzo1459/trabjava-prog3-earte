@@ -19,6 +19,6 @@ public class Estudo extends Atividade implements Serializable {
 		String nomeMaterial = material;					
 		putMaterial(nomeMaterial);   
 		setSincrona(false);
-		System.out.println("Novo estudo registrado");
+		//System.out.println("Novo estudo registrado");
 	}
 }

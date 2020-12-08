@@ -24,6 +24,6 @@ public class Aula extends Atividade implements Serializable {
 		String horario_aula = horario;		
 		setDataAula(data_aula, horario_aula);		
 		setSincrona(true);
-		System.out.println("Nova aula registrada");
+		//System.out.println("Nova aula registrada");
 	}
 }
