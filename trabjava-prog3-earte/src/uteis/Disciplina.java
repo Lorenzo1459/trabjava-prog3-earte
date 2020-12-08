@@ -96,7 +96,7 @@ public class Disciplina implements Serializable {
 	public int jaMatriculado(Map<Long, Estudante> mapa, Long s) {
 		for(Map.Entry<Long, Estudante> aux : mapa.entrySet()) {
 			if(java.lang.Long.compare(aux.getKey(), s) == 0) {	
-				System.out.println("Estudante j· matriculado");
+				System.out.println("Estudante j√° matriculado");
 				System.out.println("Matricula = "+ aux.getKey());
 				return 1;
 			}

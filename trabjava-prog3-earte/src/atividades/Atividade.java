@@ -36,9 +36,9 @@ public abstract class Atividade implements Serializable {
 //			avaliacoes.put(matricula, nota);		
 //		}
 //		else if(this.tipodeAtiv.equalsIgnoreCase("E"))
-//			System.out.println("N„o È possÌvel avaliar essa atividade, visto que ESTUDO n„o È uma atividade avaliativa.");
+//			System.out.println("N√£o √© poss√≠vel avaliar essa atividade, visto que ESTUDO n√£o √© uma atividade avaliativa.");
 //		else if(this.tipodeAtiv.equalsIgnoreCase("A"))
-//			System.out.println("N„o È possÌvel avaliar essa atividade, visto que AULA n„o È uma atividade avaliativa.");
+//			System.out.println("N√£o √© poss√≠vel avaliar essa atividade, visto que AULA n√£o √© uma atividade avaliativa.");
 		avaliacoes.put(matricula, nota);	
 		somaNotas += nota;
 		qtNotas++;

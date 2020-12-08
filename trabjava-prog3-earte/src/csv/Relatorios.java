@@ -51,7 +51,7 @@ public class Relatorios implements Serializable{
 	
 	public void relatorioEstudante(Map<Long, Estudante> mapa, File file3) {
 		Escritor_csv writer = new Escritor_csv();
-		//99-0 avaliações && A-Z nome
+		//99-0 avaliaÃ§Ãµes && A-Z nome
 		
 		for(Map.Entry<Long, Estudante> aux : mapa.entrySet()) {
 			Long mat = aux.getValue().getMatricula();

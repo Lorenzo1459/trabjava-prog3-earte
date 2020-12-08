@@ -18,7 +18,7 @@ public class Escritor_csv {
 		}
 		try {
 			PrintWriter printwriter = new PrintWriter(new FileOutputStream(file,true));
-			String cabecalho = String.format("Periodo;Codigo Disciplina;Disciplina;Docente Responsável;E-mail Docente;Qtd. Estudantes;Qtd. Atividades");
+			String cabecalho = String.format("Periodo;Codigo Disciplina;Disciplina;Docente ResponsÃ¡vel;E-mail Docente;Qtd. Estudantes;Qtd. Atividades");
 			String format = String.format("%s;%s;%s;%s;%s;%d;%d", periodo, codigo, nome, docente, email, numEstud, numAtivs);
 			if(existe == 0)
 				printwriter.println(cabecalho);
@@ -38,7 +38,7 @@ public class Escritor_csv {
 		}
 		try {
 			PrintWriter printwriter = new PrintWriter(new FileOutputStream(file2,true));
-			String cabecalho = String.format("Docente;Qtd. Disciplinas;Qtd. Periodos;Média Atividades/Disciplina;%c Síncronas;%c Assíncronas;Média de Notas", 37, 37);
+			String cabecalho = String.format("Docente;Qtd. Disciplinas;Qtd. Periodos;MÃ©dia Atividades/Disciplina;%c SÃ­ncronas;%c AssÃ­ncronas;MÃ©dia de Notas", 37, 37);
 			String format = String.format("%s;%d;%d;%.1f;%d%c;%d%c;%.1f", nome, num_disc, num_periodos_dif, mediaAtiv_Disc, Math.round(percSinc), 37, Math.round(percAssinc), 37, mediaNotas);
 			if(existe == 0)
 				printwriter.println(cabecalho);
@@ -58,7 +58,7 @@ public class Escritor_csv {
 		}
 		try {
 			PrintWriter printwriter = new PrintWriter(new FileOutputStream(file3,true));
-			String cabecalho = String.format("Matrícula;Nome;Média Disciplinas/Período;Média Avaliações/Disciplina;Média Notas Avaliações");
+			String cabecalho = String.format("MatrÃ­cula;Nome;MÃ©dia Disciplinas/PerÃ­odo;MÃ©dia AvaliaÃ§Ãµes/Disciplina;MÃ©dia Notas AvaliaÃ§Ãµes");
 			String format = String.format("%d;%s;%.1f;%.1f;%.1f", mat, nome, mediaDisc_per, mediaAv_disc, mediaNotas);
 			if(existe == 0)
 				printwriter.println(cabecalho);
@@ -77,7 +77,7 @@ public class Escritor_csv {
 		}
 		try {
 			PrintWriter printwriter = new PrintWriter(new FileOutputStream(file4,true));
-			String cabecalho = String.format("Docente;Período;Código;Nome;Qtd. Atividades;%c Síncronas;%c Assíncronas;CH;Datas Avaliações",37,37);
+			String cabecalho = String.format("Docente;PerÃ­odo;CÃ³digo;Nome;Qtd. Atividades;%c SÃ­ncronas;%c AssÃ­ncronas;CH;Datas AvaliaÃ§Ãµes",37,37);
 			String format = String.format("%s;%s;%s;%s;%d%c;%d%c", login, per, codigo, nome, Math.round(perSinc),37,Math.round(perAssinc),37);
 			if(existe == 0)
 				printwriter.println(cabecalho);

@@ -23,31 +23,31 @@ public class principal {
 			for(int i = 0; i < args.length; i = i + 2) {
 				switch(args[i]) {
 				case "-p":
-					arq_periodos = String.format("in/%s", args[i+1]);
+					arq_periodos = String.format("%s", args[i+1]);
 					
 					break;
 				case "-d":
-					arq_docentes = String.format("in/%s", args[i+1]);
+					arq_docentes = String.format("%s", args[i+1]);
 					
 					break;
 				case "-o":
-					arq_oferta_disc = String.format("in/%s", args[i+1]);
+					arq_oferta_disc = String.format("%s", args[i+1]);
 					
 					break;
 				case "-e":
-					arq_estudantes = String.format("in/%s", args[i+1]);
+					arq_estudantes = String.format("%s", args[i+1]);
 					
 					break;
 				case "-m":
-					arq_mat_estuds = String.format("in/%s", args[i+1]);
+					arq_mat_estuds = String.format("%s", args[i+1]);
 					
 					break;
 				case "-a":
-					arq_ativs = String.format("in/%s", args[i+1]);
+					arq_ativs = String.format("%s", args[i+1]);
 					
 					break;
 				case "-n":
-					arq_avaliacoes = String.format("in/%s", args[i+1]);
+					arq_avaliacoes = String.format("%s", args[i+1]);
 					
 					break;
 				case "--read-only":

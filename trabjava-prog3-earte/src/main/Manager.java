@@ -332,7 +332,7 @@ public class Manager implements Serializable {
                 		System.out.println("Erro : " + erro);                		
                 	}                		               			                	
                     break;
-                case "-n": // AVALIA茿O DE ATIVIDADES POR ALUNOS
+                case "-n": // AVALIA脟AO DE ATIVIDADES POR ALUNOS
                 	try {
                 		List<String> lista_Avaliacoes = leitor.lerAvaliacoesCSV(arquivo);
                 		for(int i = 0; i < leitor.getNumAvaliacoes(); i++) {
@@ -372,36 +372,36 @@ public class Manager implements Serializable {
                 	
                 	if(principal.get_write_only_status() == true) {                		
                 		Relatorios relatorio = new Relatorios();
-                		File file = new File("out/1-visao-geral.csv");
+                		File file = new File("1-visao-geral.csv");
                 		if(file.exists())
                 			file.delete();
-                		File file2 = new File("out/2-docentes.csv");	
+                		File file2 = new File("2-docentes.csv");	
                 		if(file2.exists())
                 			file2.delete();
-                		File file3 = new File("out/3-estudantes.csv");
+                		File file3 = new File("3-estudantes.csv");
                 		if(file3.exists())
                 			file3.delete();
-                		File file4 = new File("out/4-disciplinas.csv");
+                		File file4 = new File("4-disciplinas.csv");
                 		if(file4.exists())
                 			file4.delete();
                 		
                 		for(Map.Entry<String, Periodo> aux : periodos.entrySet()){
                 			relatorio.relatorioDisc(disciplinas,aux.getValue().getNomePeriodo(), file);      		
                 		}
-                		System.out.printf("Relat髍io %c1-visao-geral.csv%c completo.\n", 34, 34);
+                		System.out.printf("Relat贸rio %c1-visao-geral.csv%c completo.\n", 34, 34);
                 		
                 		
                 		relatorio.relatorioDocente(docentes, file2);
-                		System.out.printf("Relat髍io %c2-docentes.csv%c completo.\n", 34, 34);
+                		System.out.printf("Relat贸rio %c2-docentes.csv%c completo.\n", 34, 34);
                 		
                 		
                 		relatorio.relatorioEstudante(estudantes, file3);
-                		System.out.printf("Relat髍io %c3-estudantes.csv%c completo.\n", 34, 34);
+                		System.out.printf("Relat贸rio %c3-estudantes.csv%c completo.\n", 34, 34);
                 		
                 		for(Map.Entry<String, Docente> aux : docentes.entrySet()) {
                 			relatorio.relatorioDiscDocente(aux.getValue(), disciplinas, file4);
                 		}
-                		System.out.printf("Relat髍io %c4-disciplinas.csv%c completo.\n", 34, 34);
+                		System.out.printf("Relat贸rio %c4-disciplinas.csv%c completo.\n", 34, 34);
                 	}
                 	
                     break;                
