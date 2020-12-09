@@ -5,21 +5,22 @@ import java.util.Map;
 
 import uteis.Disciplina;
 
-public class Escritor_csv {
+public class Escritor_csv implements Serializable{
 	
 	public Escritor_csv() {
 		
 	}
 	
-	public void visao_geral(String periodo, String codigo, String nome, String docente, String email, Integer numEstud, Integer numAtivs, File file) {		
+	public void visao_geral(String periodo, String codigo, String nome, String docente, String email, Integer numEstud, Integer numAtivs, File file) {			
 		int existe = 0;			
 		if(file.exists()) {
 			existe = 1;
 		}
-		try {
+		try {			
 			PrintWriter printwriter = new PrintWriter(new FileOutputStream(file,true));
 			String cabecalho = String.format("Periodo;Codigo Disciplina;Disciplina;Docente Responsável;E-mail Docente;Qtd. Estudantes;Qtd. Atividades");
 			String format = String.format("%s;%s;%s;%s;%s;%d;%d", periodo, codigo, nome, docente, email, numEstud, numAtivs);
+			System.out.printf("%s;%s;%s;%s;%s;%d;%d", periodo, codigo, nome, docente, email, numEstud, numAtivs);
 			if(existe == 0)
 				printwriter.println(cabecalho);
 			printwriter.println(format);

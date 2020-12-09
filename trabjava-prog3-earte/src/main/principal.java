@@ -2,7 +2,7 @@ package main;
 import java.io.*;
 import java.util.*;
 
-public class principal {
+public class principal implements Serializable{
 	static boolean write_only = false;
 	public static void main(String[] args) {	
 		//File handle_error = new File("out/output.txt");
@@ -17,74 +17,84 @@ public class principal {
 		
 		Manager m = new Manager();
 		
-		Scanner leitor = new Scanner(System.in);
-		set_write_only_status(true);
+//		Scanner leitor = new Scanner(System.in);		
 		
 		try {
-			for(int i = 0; i < args.length; i = i + 2) {
-				switch(args[i]) {
-				case "-p":
-					arq_periodos = String.format("%s", args[i+1]);
-					
-					break;
-				case "-d":
-					arq_docentes = String.format("%s", args[i+1]);
-					
-					break;
-				case "-o":
-					arq_oferta_disc = String.format("%s", args[i+1]);
-					
-					break;
-				case "-e":
-					arq_estudantes = String.format("%s", args[i+1]);
-					
-					break;
-				case "-m":
-					arq_mat_estuds = String.format("%s", args[i+1]);
-					
-					break;
-				case "-a":
-					arq_ativs = String.format("%s", args[i+1]);
-					
-					break;
-				case "-n":
-					arq_avaliacoes = String.format("%s", args[i+1]);
-					
-					break;
-				case "--read-only":
-					try {					
-						FileOutputStream fileOutput = new FileOutputStream("dados.dat");
-						ObjectOutputStream objOutput = new ObjectOutputStream(fileOutput);
-						objOutput.writeObject(m);
-						objOutput.close();
-						set_write_only_status(false);						
-						//System.out.println("Salvo com sucesso.");			
-					}catch(Exception e) {
-						System.out.println("Erro de I/O ");					
+			boolean read_only = false;
+			if(args[0].compareTo("--write-only") != 0) {
+				for(int i = 0; i < args.length; i = i + 2) {
+					switch(args[i]) {
+					case "-p":
+						arq_periodos = String.format("%s", args[i+1]);
+						
+						break;
+					case "-d":
+						arq_docentes = String.format("%s", args[i+1]);
+						
+						break;
+					case "-o":
+						arq_oferta_disc = String.format("%s", args[i+1]);
+						
+						break;
+					case "-e":
+						arq_estudantes = String.format("%s", args[i+1]);
+						
+						break;
+					case "-m":
+						arq_mat_estuds = String.format("%s", args[i+1]);
+						
+						break;
+					case "-a":
+						arq_ativs = String.format("%s", args[i+1]);
+						
+						break;
+					case "-n":
+						arq_avaliacoes = String.format("%s", args[i+1]);
+						
+						break;
+					case "--read-only":		
+						read_only = true;
+						break;					
+					default:
+						break;
 					}
-					break;
-				case "--write-only":
-					try {															
-						FileInputStream fileInput = new FileInputStream("dados.dat");
-						ObjectInputStream objInput = new ObjectInputStream(fileInput);
-						m = (Manager) objInput.readObject();
-						//System.out.println("Carregado com sucesso.");	
-						objInput.close();					
-					}catch(Exception e) {
-						System.out.println("Erro de I/O");					
-					}
-					break;
-				default:
-					break;
 				}
-			}	
-			m.DisplayMenu("-p", arq_periodos);
-			m.DisplayMenu("-d", arq_docentes);
-			m.DisplayMenu("-o", arq_oferta_disc);
-			m.DisplayMenu("-e", arq_estudantes);
-			m.DisplayMenu("-m", arq_mat_estuds);
-			m.DisplayMenu("-a", arq_ativs);
-			m.DisplayMenu("-n", arq_avaliacoes);
+				m.DisplayMenu("-p", arq_periodos);
+				m.DisplayMenu("-d", arq_docentes);
+				m.DisplayMenu("-o", arq_oferta_disc);
+				m.DisplayMenu("-e", arq_estudantes);
+				m.DisplayMenu("-m", arq_mat_estuds);
+				m.DisplayMenu("-a", arq_ativs);
+				m.DisplayMenu("-n", arq_avaliacoes);	
+				
+				if(read_only == true) {
+					try {														      
+						FileOutputStream fileOutput = new FileOutputStream("dados.dat");
+						ObjectOutputStream objOutput = new ObjectOutputStream(fileOutput);		
+						
+						objOutput.writeObject(m);
+						objOutput.flush();
+						objOutput.close();		
+						fileOutput.close();
+//						System.out.println("Salvo com sucesso.");			
+					}catch(Exception e) {
+						e.printStackTrace();					
+					}
+				}				
+			}
+			else {
+				try {							
+					FileInputStream fileInput = new FileInputStream("dados.dat");					
+					ObjectInputStream objInput = new ObjectInputStream(fileInput);					
+					m =  (Manager) objInput.readObject();																
+					m.set_write_only_status(true);					
+					m.DisplayMenu("--write-only", null);
+					objInput.close();											
+				}catch(Exception e) {
+					e.printStackTrace();					
+				}
+			}
+			
 			
 		}catch(Exception e) {
 			//try {
@@ -99,11 +109,5 @@ public class principal {
 		}
 	
 	}
-	public static void set_write_only_status(boolean b) {
-		write_only = b;
-	}
 	
-	public static boolean get_write_only_status() {
-		return principal.write_only;
-	}
 }

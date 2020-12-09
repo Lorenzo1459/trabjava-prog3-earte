@@ -20,11 +20,12 @@ public class Manager implements Serializable {
 	
 	private static final Throwable Throwable = null;
 	private int serializingSignal = 0;	
-	private Map<String, Periodo> periodos = new HashMap<String, Periodo>();
+	private  Map<String, Periodo> periodos = new HashMap<String, Periodo>();
 	private Map<String, Docente> docentes = new HashMap<String, Docente>();
 	private Map<Long , Estudante> estudantes = new HashMap<Long, Estudante>();
 	private Map<String, Disciplina> disciplinas = new HashMap<String, Disciplina>();
-
+	private boolean write_only_status = false;
+	
 	public Manager() {
 		
 	}
@@ -83,7 +84,7 @@ public class Manager implements Serializable {
 			}
         }
 		return 0;
-	}	 					
+	}	 							
 	
 	public void DisplayMenu(String opcao, String arquivo) {		
 			Leitor_csv leitor = new Leitor_csv();		
@@ -94,7 +95,8 @@ public class Manager implements Serializable {
                     try {
                     	
                         for(Map.Entry<String, Periodo> aux : periodos.entrySet()) {
-                        	//System.out.println(aux.getKey());                    	
+//                        	System.out.println("Teste pelo read");
+//                        	System.out.println(aux.getKey());                    	
                         }
                         
                         for(int i = 0; i < leitor.getNumPeriodos(); i++)   {
@@ -118,13 +120,13 @@ public class Manager implements Serializable {
                     catch(Exception e) {
                     	//try {
                             PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                            pw.println("" + e);
+                            pw.println("" + e.getMessage());
                             pw.flush();
                             pw.close();
                             System.exit(1);
                         //} 
                         //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                    	System.out.println("Erro : " + e);                       	                    	
+                    	System.out.println("Erro : " + e.getMessage());                       	                    	
                     };
                     break;
                 case "-d":	 //CADASTRO DE DOCENTES
@@ -154,13 +156,13 @@ public class Manager implements Serializable {
                 	catch(Exception e) {
                 		//try {
                             PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                            pw.println("" + e);
+                            pw.println("" + e.getMessage());
                             pw.flush();
                             pw.close();
                             System.exit(1);
                         //} 
                         //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                		System.out.println("Erro : " + e);                       	                    	
+                		System.out.println("Erro : " + e.getMessage());                       	                    	
                 	}                    
                     break;
                 case "-o": // CADASTRO DE DISCIPLINAS
@@ -201,9 +203,9 @@ public class Manager implements Serializable {
                         //System.out.println("Disciplinas cadastradas."); 
                         } 
                     	catch(Exception e) {
-                    		//try {
+                    		//try {                    		
                                 PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                                pw.println("" + e);
+                                pw.println("" + e.getMessage());
                                 pw.flush();
                                 pw.close();
                                 System.exit(1);
@@ -211,7 +213,7 @@ public class Manager implements Serializable {
                             //catch (FileNotFoundException e1) {
                             //    e1.printStackTrace();
                             //}
-                    		System.out.println("Erro :" + e);                    		
+                    		System.out.println("Erro :" + e.getMessage());                    		
                     	}                    	                                                  		                  	                                                                                                      	                  
                     break;
                 case "-e": // CADASTRO DE ALUNOS
@@ -243,7 +245,7 @@ public class Manager implements Serializable {
                 	catch(Exception e) {
                 		//try {
                             PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                            pw.println("" + e);
+                            pw.println("" + e.getMessage());
                             pw.flush();
                             pw.close();
                             System.exit(1);
@@ -284,13 +286,13 @@ public class Manager implements Serializable {
                     	catch(Exception erro){
                     		//try {
                                 PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                                pw.println("" + erro);
+                                pw.println("" + erro.getMessage());
                                 pw.flush();
                                 pw.close();
                                 System.exit(1);
                             //} 
                             //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                    		System.out.println("Erro : " + erro);                		
+                    		System.out.println("Erro : " + erro.getMessage());                		
                     	}                		                		                		                                       
                     break;
                 case "-a": // REGISTRO DE ATIVIDADES
@@ -313,7 +315,7 @@ public class Manager implements Serializable {
                 	catch(Exception erro){
                 		//try {
                             PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                            pw.println("" + erro);
+                            pw.println("" + erro.getMessage());
                             pw.flush();
                             pw.close();
                             System.exit(1);
@@ -349,20 +351,22 @@ public class Manager implements Serializable {
                 		}catch(Exception erro){
                 			//try {
                                 PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                                pw.println("" + erro);
+                                pw.println("" + erro.getMessage());
                                 pw.flush();
                                 pw.close();
                                 System.exit(1);
                             //} 
                             //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                    		System.out.println("Erro : " + erro);                		
-                    	}  
+                    		System.out.println("Erro : " + erro.getMessage());                		
+                    	}       
+                	break;
+                case "--write-only":   
                 	
-                	if(principal.get_write_only_status() == true) {                		
+                	System.out.println("tam = " + this.periodos.size());
                 		Relatorios relatorio = new Relatorios();
-						File file = new File("1-visao-geral.csv");
-                		if(file.exists())
-                			file.delete();
+						File file = new File("1-visao-geral.csv");						
+                		if(file.exists())                 			
+                			file.delete();                  		
                 		File file2 = new File("2-docentes.csv");	
                 		if(file2.exists())
                 			file2.delete();
@@ -372,8 +376,8 @@ public class Manager implements Serializable {
                 		File file4 = new File("4-disciplinas.csv");
                 		if(file4.exists())
                 			file4.delete();
-                		
-                		for(Map.Entry<String, Periodo> aux : periodos.entrySet()){
+                		                		
+                		for(Map.Entry<String, Periodo> aux : periodos.entrySet()){                			
                 			relatorio.relatorioDisc(disciplinas,aux.getValue().getNomePeriodo(), file);      		
                 		}
                 		//System.out.printf("Relatório %c1-visao-geral.csv%c completo.\n", 34, 34);
@@ -389,14 +393,18 @@ public class Manager implements Serializable {
                 		for(Map.Entry<String, Docente> aux : docentes.entrySet()) {
                 			relatorio.relatorioDiscDocente(aux.getValue(), disciplinas, file4);
                 		}
-                		//System.out.printf("Relatório %c4-disciplinas.csv%c completo.\n", 34, 34);
-                	}
+                		//System.out.printf("Relatório %c4-disciplinas.csv%c completo.\n", 34, 34);                	                		                	                		
+                	
                 	
                     break;                
                 default:
                     System.out.println("Favor informar uma opcao valida.");
                     break;
             }                        
+	}
+	
+	public void set_write_only_status(boolean b) {
+		this.write_only_status = b;
 	}
 }
 	

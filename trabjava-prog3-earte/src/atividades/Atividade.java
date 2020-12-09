@@ -7,7 +7,7 @@ import uteis.Estudante;
 
 public abstract class Atividade implements Serializable {
 
-	Scanner leitor = new Scanner(System.in);
+	static Scanner leitor = new Scanner(System.in);
 	
 	private String nomeAtiv;
 	private boolean ehSincrona;

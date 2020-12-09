@@ -13,7 +13,7 @@ public class Relatorios implements Serializable{
 		
 	}
 	
-	public void relatorioDisc(Map<String, Disciplina> mapa, String s, File file) {
+	public void relatorioDisc(Map<String, Disciplina> mapa, String s, File file) {		
 			Escritor_csv writer = new Escritor_csv();						
 			//A-Z Disciplinas
 			
@@ -26,7 +26,7 @@ public class Relatorios implements Serializable{
 					String email = aux.getValue().getDocenteDisc().getLogin() + "@ufes.br";
 					Integer num_estud = aux.getValue().getNumEstudantes();
 					Integer num_ativs = aux.getValue().getNumAtividades();
-										
+															
 					writer.visao_geral(periodo, cod, nome, docente, email, num_estud, num_ativs, file);
 				}			
 			}	
