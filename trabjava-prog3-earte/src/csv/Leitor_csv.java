@@ -29,10 +29,10 @@ public class Leitor_csv implements Serializable{
 			}			
 		}
 		catch(FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		} 
 		catch (IOException e) {			
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 		return lista_periodos_csv;
 	}	
@@ -54,10 +54,10 @@ public class Leitor_csv implements Serializable{
 			}			
 		}
 		catch(FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		} 
 		catch (IOException e) {			
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 		return lista_docentes_csv;
 	}	
@@ -79,10 +79,10 @@ public class Leitor_csv implements Serializable{
 			}			
 		}
 		catch(FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		} 
 		catch (IOException e) {			
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 		return lista_disciplinas_csv;
 	}	
@@ -104,10 +104,10 @@ public class Leitor_csv implements Serializable{
 			}			
 		}
 		catch(FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		} 
 		catch (IOException e) {			
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 		return lista_estudantes_csv;
 	}	
@@ -128,10 +128,10 @@ public class Leitor_csv implements Serializable{
 			}			
 		}
 		catch(FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		} 
 		catch (IOException e) {			
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 		return lista_MatEstuds_csv;
 	}	
@@ -152,10 +152,10 @@ public class Leitor_csv implements Serializable{
 			}			
 		}
 		catch(FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		} 
 		catch (IOException e) {			
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 		return lista_Ativs_csv;
 	}	
@@ -176,10 +176,10 @@ public class Leitor_csv implements Serializable{
 			}			
 		}
 		catch(FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		} 
 		catch (IOException e) {			
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 		return lista_avaliacoes_csv;
 	}	

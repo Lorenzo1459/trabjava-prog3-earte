@@ -27,7 +27,7 @@ public class Escritor_csv implements Serializable{
 			printwriter.flush();			
 			printwriter.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}		
 	}
 	
@@ -47,7 +47,7 @@ public class Escritor_csv implements Serializable{
 			printwriter.flush();			
 			printwriter.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}		
 	}
 	
@@ -67,7 +67,7 @@ public class Escritor_csv implements Serializable{
 			printwriter.flush();			
 			printwriter.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}		
 	}
 	
@@ -86,7 +86,7 @@ public class Escritor_csv implements Serializable{
 			printwriter.flush();			
 			printwriter.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("" + e.getMessage());
 		}
 	}
 }

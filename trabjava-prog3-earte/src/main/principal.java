@@ -78,7 +78,7 @@ public class principal implements Serializable{
 						fileOutput.close();
 //						System.out.println("Salvo com sucesso.");			
 					}catch(Exception e) {
-						e.printStackTrace();					
+						System.out.println("Erro de I/O.");					
 					}
 				}				
 			}
@@ -91,7 +91,7 @@ public class principal implements Serializable{
 					m.DisplayMenu("--write-only", null);
 					objInput.close();											
 				}catch(Exception e) {
-					e.printStackTrace();					
+					System.out.println("Erro de I/O.");					
 				}
 			}
 			
@@ -100,7 +100,7 @@ public class principal implements Serializable{
 			//try {
 				PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
 				//e.printStackTrace();
-                pw.println("Erro de I/O.");
+				System.out.println("Erro de I/O.");
                 pw.flush();
                 pw.close();
                 System.exit(1);

@@ -132,6 +132,7 @@ public class Manager implements Serializable {
                 case "-d":	 //CADASTRO DE DOCENTES
                 	try {
                 		List<String> lista_docentes = leitor.lerDocentesCSV(arquivo);
+                		System.out.println("" + arquivo.toString());
                 		
                 		
                             //for(Map.Entry<String, Docente> aux : docentes.entrySet()) 
@@ -153,16 +154,19 @@ public class Manager implements Serializable {
                 		}                		                        	                                               
                             //System.out.println("Docentes cadastrados."); 
                 	}
+//                	catch(FileNotFoundException ex) {
+//                		
+//                	}
                 	catch(Exception e) {
                 		//try {
                             PrintWriter pw = new PrintWriter(System.out); // new PrintWriter(new FileOutputStream(handle_error));
-                            pw.println("" + e.getMessage());
+                            System.out.println("" + e.getMessage());
                             pw.flush();
                             pw.close();
                             System.exit(1);
                         //} 
                         //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                		System.out.println("Erro : " + e.getMessage());                       	                    	
+                		System.out.println("" + e.getMessage());                       	                    	
                 	}                    
                     break;
                 case "-o": // CADASTRO DE DISCIPLINAS
@@ -213,7 +217,7 @@ public class Manager implements Serializable {
                             //catch (FileNotFoundException e1) {
                             //    e1.printStackTrace();
                             //}
-                    		System.out.println("Erro :" + e.getMessage());                    		
+                    		System.out.println("" + e.getMessage());                    		
                     	}                    	                                                  		                  	                                                                                                      	                  
                     break;
                 case "-e": // CADASTRO DE ALUNOS
@@ -251,7 +255,7 @@ public class Manager implements Serializable {
                             System.exit(1);
                         //} 
                         //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                		System.out.println("Erro : " + e);                       	                    	
+                		System.out.println("" + e.getMessage());                       	                    	
                 	}                                                                  
                     break;
                 case "-m":             // MATRICULAS DE ALUNOS EM DISCIPLINAS
@@ -292,7 +296,7 @@ public class Manager implements Serializable {
                                 System.exit(1);
                             //} 
                             //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                    		System.out.println("Erro : " + erro.getMessage());                		
+                    		System.out.println("" + erro.getMessage());                		
                     	}                		                		                		                                       
                     break;
                 case "-a": // REGISTRO DE ATIVIDADES
@@ -321,7 +325,7 @@ public class Manager implements Serializable {
                             System.exit(1);
                         //} 
                         //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                		System.out.println("Erro : " + erro);                		
+                		System.out.println("" + erro.getMessage());                		
                 	}                		               			                	
                     break;
                 case "-n": // AVALIAÇAO DE ATIVIDADES POR ALUNOS
@@ -357,7 +361,7 @@ public class Manager implements Serializable {
                                 System.exit(1);
                             //} 
                             //catch (FileNotFoundException e1) { e1.printStackTrace(); }
-                    		System.out.println("Erro : " + erro.getMessage());                		
+                    		System.out.println("" + erro.getMessage());                		
                     	}       
                 	break;
                 case "--write-only":   
