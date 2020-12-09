@@ -6,6 +6,9 @@ public class principal implements Serializable{
 	static boolean write_only = false;
 	public static void main(String[] args) {	
 		//File handle_error = new File("out/output.txt");
+
+		// Determina configurações regionais.
+		Locale.setDefault(new Locale("pt", "BR"));
 		
 		String arq_periodos = null;
 		String arq_docentes = null;
@@ -20,45 +23,48 @@ public class principal implements Serializable{
 //		Scanner leitor = new Scanner(System.in);		
 		
 		try {
-			boolean read_only = false;
-			if(args[0].compareTo("--write-only") != 0) {
-				for(int i = 0; i < args.length; i = i + 2) {
-					switch(args[i]) {
-					case "-p":
-						arq_periodos = String.format("%s", args[i+1]);
-						
-						break;
-					case "-d":
-						arq_docentes = String.format("%s", args[i+1]);
-						
-						break;
-					case "-o":
-						arq_oferta_disc = String.format("%s", args[i+1]);
-						
-						break;
-					case "-e":
-						arq_estudantes = String.format("%s", args[i+1]);
-						
-						break;
-					case "-m":
-						arq_mat_estuds = String.format("%s", args[i+1]);
-						
-						break;
-					case "-a":
-						arq_ativs = String.format("%s", args[i+1]);
-						
-						break;
-					case "-n":
-						arq_avaliacoes = String.format("%s", args[i+1]);
-						
-						break;
-					case "--read-only":		
-						read_only = true;
-						break;					
-					default:
-						break;
-					}
-				}
+			boolean read_only = false, write_only = false;
+
+			// Processa os parâmetros da linha de comando.
+			for (int i = 0; i < args.length; i++) {
+				// Procura pela opção -p, que especifica o arquivo de periodos.
+				if ("-p".equals(args[i]) && args.length > i + 1)
+					arq_periodos = args[i + 1];
+
+				// Procura pela opção -d, que especifica o arquivo de docentes.
+				else if ("-d".equals(args[i]) && args.length > i + 1)
+					arq_docentes = args[i + 1];
+
+				// Procura pela opção -o, que especifica o arquivo de disciplinas (oferta).
+				else if ("-o".equals(args[i]) && args.length > i + 1)
+					arq_oferta_disc = args[i + 1];
+
+				// Procura pela opção -e, que especifica o arquivo de estudantes.
+				else if ("-e".equals(args[i]) && args.length > i + 1)
+					arq_estudantes = args[i + 1];
+
+				// Procura pela opção -m, que especifica o arquivo de matrículas.
+				else if ("-m".equals(args[i]) && args.length > i + 1)
+					arq_mat_estuds = args[i + 1];
+
+				// Procura pela opção -a, que especifica o arquivo de atividades.
+				else if ("-a".equals(args[i]) && args.length > i + 1)
+					arq_ativs = args[i + 1];
+
+				// Procura pela opção -n, que especifica o arquivo de avaliações de atividades (notas).
+				else if ("-n".equals(args[i]) && args.length > i + 1)
+					arq_avaliacoes = args[i + 1];
+
+				// Procura pela opções --read-only e --write-only, que indicam o uso de serialização.
+				else if ("--read-only".equals(args[i]))
+					read_only = true;
+				else if ("--write-only".equals(args[i]))
+					write_only = true;
+			}			
+
+
+			if(! write_only) {
+				
 				m.DisplayMenu("-p", arq_periodos);
 				m.DisplayMenu("-d", arq_docentes);
 				m.DisplayMenu("-o", arq_oferta_disc);
@@ -87,14 +93,15 @@ public class principal implements Serializable{
 					FileInputStream fileInput = new FileInputStream("dados.dat");					
 					ObjectInputStream objInput = new ObjectInputStream(fileInput);					
 					m =  (Manager) objInput.readObject();																
-					m.set_write_only_status(true);					
-					m.DisplayMenu("--write-only", null);
+					//m.set_write_only_status(true);					
 					objInput.close();											
 				}catch(Exception e) {
 					System.out.println("Erro de I/O.");					
 				}
 			}
-			
+
+			// Gera os relatórios.
+			if (! read_only) m.DisplayMenu("--write-only", null);
 			
 		}catch(Exception e) {
 			//try {
