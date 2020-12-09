@@ -24,7 +24,7 @@ public class Manager implements Serializable {
 	private Map<String, Docente> docentes = new HashMap<String, Docente>();
 	private Map<Long , Estudante> estudantes = new HashMap<Long, Estudante>();
 	private Map<String, Disciplina> disciplinas = new HashMap<String, Disciplina>();
-	private boolean write_only_status = false;
+	//private boolean write_only_status = false;
 	
 	public Manager() {
 		
@@ -362,7 +362,7 @@ public class Manager implements Serializable {
                 	break;
                 case "--write-only":   
                 	
-                	System.out.println("tam = " + this.periodos.size());
+                	//System.out.println("tam = " + this.periodos.size());
                 		Relatorios relatorio = new Relatorios();
 						File file = new File("1-visao-geral.csv");						
                 		if(file.exists())                 			
@@ -403,8 +403,8 @@ public class Manager implements Serializable {
             }                        
 	}
 	
-	public void set_write_only_status(boolean b) {
-		this.write_only_status = b;
-	}
+	//public void set_write_only_status(boolean b) {
+	//	this.write_only_status = b;
+	//}
 }
 	
